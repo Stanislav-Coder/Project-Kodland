@@ -1,0 +1,197 @@
+/* === GLOBAL RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #0f2027;
+  position: relative;
+  color: #fff;
+}
+
+/* === ANIMATED BACKGROUND === */
+body::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    120deg,
+    #0ff 0px,
+    #0ff 2px,
+    transparent 2px,
+    transparent 40px
+  );
+  animation: moveLines 10s linear infinite;  /* <-- Faster movement */
+  opacity: 0.1;
+  z-index: 0;
+}
+
+@keyframes moveLines {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(80px, 80px);  /* <-- Increased distance for more noticeable motion */
+  }
+}
+
+/* === MAIN CONTAINER === */
+.container {
+  position: relative;
+  z-index: 1;
+  background: rgba(20, 20, 40, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+  width: 350px;
+}
+
+/* === TITLES === */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* === FORM STYLING === */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  transition: 0.3s;
+}
+
+form input:focus {
+  outline: none;
+  background-color: #444;
+  box-shadow: 0 0 5px #0ff;
+}
+
+/* === BUTTONS === */
+input[type="submit"],
+button,
+.btn-link {
+  background: linear-gradient(135deg, #00bcd4, #2196f3);
+  border: none;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.btn-link:hover {
+  background: linear-gradient(135deg, #03a9f4, #00e5ff);
+  transform: scale(1.03);
+  box-shadow: 0 0 10px #0ff;
+}
+
+/* === Alert === */
+/* === Dashboard Specific === */
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+/* Special link buttons already exist: .btn-link, .btn-youtube, etc. */
+
+/* Ensure logout button is styled like others */
+form input[type="submit"] {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background: linear-gradient(135deg, #ff6a5b, #ff6f3c);
+  transform: scale(1.03);
+  box-shadow: 0 0 10px #ff6a5b;
+}
+
+/* Ensure flash alerts animate the same way */
+.alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-bottom: 10px;
+}
+
+.flash-messages {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.alert-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.alert-error {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* === LOGOUT LINK (if used) === */
+.logout {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.logout:hover {
+  color: #fff;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h2>Login</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+
+            {{ form.submit() }}
+        </form>
+        <div class="links">
+            <a href="{{ url_for('register') }}">Don't have an account? Register</a>
+        </div>
+    </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+          setTimeout(() => {
+            alert.style.opacity = '0';
+            alert.style.transform = 'translateY(-10px)';
+          }, 3000);
+          setTimeout(() => {
+            alert.remove();
+          }, 3600);
+        });
+      });
+    </script>
+</body>
+</html>

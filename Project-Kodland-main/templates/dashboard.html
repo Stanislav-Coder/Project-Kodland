@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <h2 class="dashboard-title">Welcome, {{ username }}!</h2>
+
+  <div class="button-group">
+    <a href="https://www.youtube.com/@Scripter-Coder" target="_blank" class="btn-link btn-youtube">📺 YouTube Channel</a>
+    <a href="https://discord.gg/v5swRqZzBG" target="_blank" class="btn-link btn-discord">💬 Discord Server</a>
+    <a href="https://github.com/Stanislav-Coder/Project-Kodland" target="_blank" class="btn-link btn-github">🐙 GitHub Repository</a>
+  </div>
+
+  <form action="{{ url_for('logout') }}" method="get">
+    <input type="submit" value="Logout">
+  </form>
+</div>
+{% endblock %}
